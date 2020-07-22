@@ -1,0 +1,66 @@
+
+    import React, { Component } from 'react'
+
+    export default class AirlineForm extends Component {
+
+        constructor() {
+            super()
+            this.state = {
+                firstName: "",
+                lastName: "",
+                dietary: []
+            }
+            this.handleChange = this.handleChange.bind(this)
+        }
+            
+
+        handleChange(event) {
+            const {name, value, checked, type} = event.target
+
+            type === "checkbox" ? this.setState({[name]: checked}) : this.setState({[name]: value})
+        }
+
+        render() {
+
+
+            return (
+                <main style={{marginLeft:"100px", marginTop:"50px"}}>
+                    <form>
+                        <input 
+                            type="text" 
+                            placeholder="Enter First Name"
+                            name="firstName"
+                            value={this.state.firstName} 
+                            onChange={this.handleChange}
+                        />
+                        <br />
+                        <input style={{marginTop:"20px"}}
+                            type="text"
+                            placeholder="Enter Last Name"
+                            name="lastName"
+                            value={this.state.lastName}
+                            onChange={this.handleChange}
+                        />
+                        
+                        <br />
+                        <div style={{marginTop:"20px"}}>
+                            <label >Do you have any Dietary restrictions:</label>
+                           
+                        ///checkboxes to display here/////
+
+
+                       </div>
+                    </form>
+                <hr />
+                    <h2>Entered information:</h2>
+                    <p>Your name: {this.state.firstName + " " + this.state.lastName}</p>
+                    <p>
+                        Your dietary restrictions: 
+                        {/* Dietary restrictions here, comma separated */}
+                    </p>
+                </main>
+            )
+        }
+    }
+
+<!-- end snippet -->
